@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-})->name('user_dashboard');
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::post('/login', [AuthController::class, 'login'])->name('handle_login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('user.index');
+    })->name('user_dashboard');
+});
