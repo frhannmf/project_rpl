@@ -24,7 +24,7 @@ class AuthController extends Controller
         }
         if (Auth::attempt($validated, $remember_me)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended(route('user_dashboard'));
         }
         return back()->withErrors([
             'not_match' => 'NIM atau password tidak sesuai',

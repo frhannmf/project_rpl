@@ -46,7 +46,7 @@
                 <p class="fw-bold">{{$user['prodi']}}</p>
               </div>
               <div class="col-12 col-md-6">
-                <p class="mb-1">Status</p>
+                <p class="mb-1">Status Kelulusan</p>
                 <p class="fw-bold">{{$user['status']}}</p>
               </div>
               <div class="col-12 col-md-6">
@@ -54,7 +54,7 @@
                 <p class="fw-bold">{{$user['tahun_lulus']}}</p>
               </div>
             </div>
-            <a href="#" class="btn btn-primary">Ubah Profil</a>
+            <a href="{{route('edit_profile')}}" class="btn btn-primary">Ubah Profil</a>
           </div>
         </div>
       </div>
