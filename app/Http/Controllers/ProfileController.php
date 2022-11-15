@@ -18,13 +18,13 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "nim" => 'string',
-            "email" => 'email',
-            "name" => 'string',
-            "gender" => 'string|in:Laki-Laki,Perempuan',
-            "prodi" => 'string|in:DIV Statistika,DIV Komputasi Statistik,DIII Statistika',
-            "status" => 'string|in:ALUMNI,MAHASISWA',
-            "tahun_lulus" => 'string',
+            "nim" => 'nullable|string',
+            "email" => 'nullable|email',
+            "name" => 'nullable|string',
+            "gender" => 'nullable|string|in:Laki-Laki,Perempuan',
+            "prodi" => 'nullable|string|in:DIV Statistika,DIV Komputasi Statistik,DIII Statistika',
+            "status" => 'nullable|string|in:ALUMNI,MAHASISWA',
+            "tahun_lulus" => 'nullable|string',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());

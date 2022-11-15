@@ -14,9 +14,10 @@
               <img src="/images/logo.png" alt="logo stis" class="img-fluid" width="100px">
             </div>
             <h4>Apa itu SILANI?</h4>
-            <p class="mt-3">
+            <p class="my-3">
               SILANI (Sistem Layanan Alumni) adalah sebuah web pengelolaan ijazah meliputi pengumpulan ijazah SMA, pengambilan ijazah Polstat STIS, dan pengajuan surat tidak terdaftar PDDIKTI.
             </p>
+            <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@
         <div class="card">
           <div class="card-body">
             <p class="fw-bold text-center">Pengumpulan Ijazah SMA</p>
-            <button class="btn btn-primary w-100">Ajukan</button>
+            <a href="{{route('submit_sma')}}" class="btn btn-primary w-100">Ajukan</a>
           </div>
         </div>
       </div>
@@ -73,7 +74,7 @@
         <div class="card">
           <div class="card-body">
             <p class="fw-bold text-center">Pengambilan Ijazah SMA</p>
-            <button class="btn btn-primary w-100">Ajukan</button>
+            <a href="{{route('retrieve_sma')}}" class="btn btn-primary w-100">Ajukan</a>
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@
         <div class="card">
           <div class="card-body">
             <p class="fw-bold text-center">Pengambilan Ijazah STIS</p>
-            <button class="btn btn-primary w-100">Ajukan</button>
+            <a href="{{route('retrieve_stis')}}" class="btn btn-primary w-100">Ajukan</a>
           </div>
         </div>
       </div>
