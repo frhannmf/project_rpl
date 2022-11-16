@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfileController::class, 'index'])->name('edit_profile');
     Route::post('/profil/{id}/update', [ProfileController::class, 'update'])->name('handle_edit_profile');
 
+    Route::get('/list-form', [FormController::class, 'getListFormUser'])->name('list_form');
+
     Route::get('/form/submit-sma', [FormController::class, 'indexSubmitSma'])->name('submit_sma');
     Route::post('/form/submit-sma', [FormController::class, 'submitSma'])->name('handle_submit_sma');
 

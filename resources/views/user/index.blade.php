@@ -60,7 +60,8 @@
         </div>
       </div>
     </div>
-    <h3 class="text-center my-5">Layanan Silani</h3>
+    <h3 class="text-center mt-5">Layanan Silani</h3>
+    <a href="{{route('list_form')}}" class="btn btn-success mb-5">Lihat Daftar Pengajuan</a>
     <div class="row">
       <div class="col-12 col-md">
         <div class="card">

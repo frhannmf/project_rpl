@@ -40,6 +40,15 @@ class FormController extends Controller
         return view('user.forms.request_surat_pddikti', ['user_id' => $user['id']]);
     }
 
+    public function getListFormUser()
+    {
+        $user = Auth::user();
+
+        $forms = Form::where('user_id', $user['id'])->get()->toArray();
+
+        return view('user.list_form', ["forms" => $forms]);
+    }
+
     public function submitSma(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -72,7 +81,7 @@ class FormController extends Controller
             'surat_kuasa' => $filename_surat_kuasa,
             'user_id' => $fields['user_id']
         ]);
-        return redirect()->intended(route('user_dashboard'));
+        return redirect()->intended(route('list_form'));
     }
 
     public function retrieveSma(Request $request)
@@ -107,7 +116,7 @@ class FormController extends Controller
             'surat_kuasa' => $filename_surat_kuasa,
             'user_id' => $fields['user_id']
         ]);
-        return redirect()->intended(route('user_dashboard'));
+        return redirect()->intended(route('list_form'));
     }
 
     public function retrieveStis(Request $request)
@@ -154,7 +163,7 @@ class FormController extends Controller
             'surat_kuasa' => $filename_surat_kuasa,
             'user_id' => $fields['user_id']
         ]);
-        return redirect()->intended(route('user_dashboard'));
+        return redirect()->intended(route('list_form'));
     }
 
     public function requestSkAlumniStis(Request $request)
@@ -176,7 +185,7 @@ class FormController extends Controller
             'tanggal' => $fields['tanggal'],
             'user_id' => $fields['user_id']
         ]);
-        return redirect()->intended(route('user_dashboard'));
+        return redirect()->intended(route('list_form'));
     }
 
     public function requestSuratPddikti(Request $request)
@@ -200,6 +209,6 @@ class FormController extends Controller
             'tanggal' => $fields['tanggal'],
             'user_id' => $fields['user_id']
         ]);
-        return redirect()->intended(route('user_dashboard'));
+        return redirect()->intended(route('list_form'));
     }
 }
