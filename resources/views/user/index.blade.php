@@ -90,7 +90,7 @@
         <div class="card">
           <div class="card-body">
             <p class="fw-bold text-center">Permintaan SK Alumni Polstat STIS</p>
-            <button class="btn btn-primary w-100">Ajukan</button>
+            <a href="{{route('request_sk_alumni_stis')}}" class="btn btn-primary w-100">Ajukan</a>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
         <div class="card">
           <div class="card-body">
             <p class="fw-bold text-center">Permintaan Surat tidak terdaftar di PDDIKTI</p>
-            <button class="btn btn-primary w-100">Ajukan</button>
+            <a href="{{route('request_surat_pddikti')}}" class="btn btn-primary w-100">Ajukan</a>
           </div>
         </div>
       </div>

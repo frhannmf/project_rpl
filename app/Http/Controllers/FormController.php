@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +26,18 @@ class FormController extends Controller
     {
         $user = Auth::user();
         return view('user.forms.retrieve_stis', ['user_id' => $user['id']]);
+    }
+
+    public function indexRequestSkAlumniStis()
+    {
+        $user = Auth::user();
+        return view('user.forms.request_sk_alumni_stis', ['user_id' => $user['id']]);
+    }
+
+    public function indexRequestSuratPddikti()
+    {
+        $user = Auth::user();
+        return view('user.forms.request_surat_pddikti', ['user_id' => $user['id']]);
     }
 
     public function submitSma(Request $request)
@@ -139,6 +152,52 @@ class FormController extends Controller
             'diwakilkan' => $fields['diwakilkan'] == 'true' ? true : false,
             'pengambil' => $fields['pengambil'],
             'surat_kuasa' => $filename_surat_kuasa,
+            'user_id' => $fields['user_id']
+        ]);
+        return redirect()->intended(route('user_dashboard'));
+    }
+
+    public function requestSkAlumniStis(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "user_id" => "required",
+            "tanggal" => "required",
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+        $fields = $validator->validated();
+
+        $user = User::where('id', $fields['user_id'])->first();
+
+        Form::create([
+            'type' => 'requestskalumnistis',
+            'nama' => $user['name'],
+            'tanggal' => $fields['tanggal'],
+            'user_id' => $fields['user_id']
+        ]);
+        return redirect()->intended(route('user_dashboard'));
+    }
+
+    public function requestSuratPddikti(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "user_id" => "required",
+            "tanggal" => "required",
+            "ttl" => "required",
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+        $fields = $validator->validated();
+
+        $user = User::where('id', $fields['user_id'])->first();
+
+        Form::create([
+            'type' => 'requestsuratpddikti',
+            'nama' => $user['name'],
+            'ttl' => $fields['ttl'],
+            'tanggal' => $fields['tanggal'],
             'user_id' => $fields['user_id']
         ]);
         return redirect()->intended(route('user_dashboard'));

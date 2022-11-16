@@ -39,5 +39,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/form/retrieve-stis', [FormController::class, 'indexRetrieveStis'])->name('retrieve_stis');
     Route::post('/form/retrieve-stis', [FormController::class, 'retrieveStis'])->name('handle_retrieve_stis');
 
+    Route::get('/form/request-sk-stis', [FormController::class, 'indexRequestSkAlumniStis'])->name('request_sk_alumni_stis');
+    Route::post('/form/request-sk-stis', [FormController::class, 'requestSkAlumniStis'])->name('handle_request_sk_alumni_stis');
+
+    Route::get('/form/request-surat-pddikti', [FormController::class, 'indexRequestSuratPddikti'])->name('request_surat_pddikti');
+    Route::post('/form/request-surat-pddikti', [FormController::class, 'requestSuratPddikti'])->name('handle_request_surat_pddikti');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
