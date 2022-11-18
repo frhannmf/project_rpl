@@ -65,10 +65,10 @@ Route::middleware(['auth', 'auth.admin'])->prefix('admin')->group(function () {
     })->name('admin_dashboard');
 
     Route::get('/users', [UserController::class, 'index'])->name('admin_user_list');
-    Route::get('/users/{id}', [UserController::class, 'indexDetail'])->name('admin_user_detail');
     Route::get('/users/tambah', function () {
         return view('admin.userman.add_form');
     })->name('admin_user_create');
+    Route::get('/users/{id}', [UserController::class, 'indexDetail'])->name('admin_user_detail');
     Route::get('/users/{id}/update', [UserController::class, 'indexUpdate'])->name('admin_user_update');
     Route::get('/users/{id}/delete', [UserController::class, 'indexDelete'])->name('admin_user_delete');
 
