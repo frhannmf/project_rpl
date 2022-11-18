@@ -40,6 +40,20 @@ class FormController extends Controller
         return view('user.forms.request_surat_pddikti', ['user_id' => $user['id']]);
     }
 
+    public function getListFormAdmin()
+    {
+        $forms = Form::with('user')->get()->toArray();
+
+        return view('admin.form.index', ["forms" => $forms]);
+    }
+
+    public function getDetailForm($id)
+    {
+        $form = Form::where('id', $id)->with('user')->first()->toArray();
+
+        return view('admin.form.detail', ["form" => $form]);
+    }
+
     public function getListFormUser()
     {
         $user = Auth::user();
@@ -47,6 +61,22 @@ class FormController extends Controller
         $forms = Form::where('user_id', $user['id'])->get()->toArray();
 
         return view('user.list_form', ["forms" => $forms]);
+    }
+
+    public function approveForm(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            "approve" => "required|string|in:Diterima,Ditolak",
+            "reason" => "nullable"
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+
+        $fields = $validator->validated();
+
+        Form::where('id', $id)->update($fields);
+        return redirect()->intended(route('admin_form_list'));
     }
 
     public function submitSma(Request $request)

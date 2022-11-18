@@ -25,7 +25,7 @@ class CreateForm extends Migration
             $table->string('bukti')->nullable();
             $table->string('ttl')->nullable();
             $table->string('type');
-            $table->boolean('approve')->nullable();
+            $table->string('approve')->nullable();
             $table->string('reason')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

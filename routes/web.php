@@ -75,4 +75,8 @@ Route::middleware(['auth', 'auth.admin'])->prefix('admin')->group(function () {
     Route::post('/users', [UserController::class, 'create'])->name('handle_admin_user_create');
     Route::post('/user/{id}/update', [UserController::class, 'update'])->name('handle_admin_user_update');
     Route::post('/user/{id}/delete', [UserController::class, 'delete'])->name('handle_admin_user_delete');
+
+    Route::get('/form', [FormController::class, 'getListFormAdmin'])->name('admin_form_list');
+    Route::get('/form/{id}', [FormController::class, 'getDetailForm'])->name('admin_form_detail');
+    Route::post('/form/{id}', [FormController::class, 'approveForm'])->name('handle_form_approve');
 });

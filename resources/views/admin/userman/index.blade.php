@@ -5,7 +5,10 @@
 @section('body')
 <div class="container">
   <h2 class="mt-5 mb-3">Daftar Semua Pengguna SILANI STIS</h2>
-  <a href="{{route('admin_user_create')}}" class="btn btn-primary">Tambah Pengguna</a>
+  <div class="d-flex gap-3">
+    <a href="{{route('admin_user_create')}}" class="btn btn-primary">Tambah Pengguna</a>
+    <a href="{{route('admin_dashboard')}}" class="btn btn-dark">Kembali</a>
+  </div>
   <div class="mt-3">
     <table class="table table-striped table-bordered">
       <thead>
