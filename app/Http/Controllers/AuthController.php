@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index()
-    {
-        return view('login');
-    }
-
     public function login(Request $request)
     {
         $validated = $request->validate([
@@ -28,6 +23,30 @@ class AuthController extends Controller
         }
         return back()->withErrors([
             'not_match' => 'NIM atau password tidak sesuai',
+        ]);
+    }
+
+    public function loginAdmin(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $remember_me = false;
+        if ($request->remember_me == 'true') {
+            $remember_me = true;
+        }
+        $authData = [
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'role' => 'ADMIN'
+        ];
+        if (Auth::attempt($authData, $remember_me)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin_dashboard'));
+        }
+        return back()->withErrors([
+            'not_match' => 'Email atau password tidak sesuai',
         ]);
     }
 

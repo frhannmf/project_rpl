@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth.nologin'])->group(function () {
+    Route::get('/login', function () {
+        return view('login');
+    })->name('login');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+    Route::get('/admin/login', function () {
+        return view('admin.login');
+    })->name('admin_login');
 
-Route::post('/login', [AuthController::class, 'login'])->name('handle_login');
+    Route::post('/login', [AuthController::class, 'login'])->name('handle_login');
+    Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('handle_admin_login');
+});
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::middleware(['auth', 'auth.user'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('user_dashboard');
 
     Route::get('/profil', [ProfileController::class, 'index'])->name('edit_profile');
@@ -46,6 +57,22 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/form/request-surat-pddikti', [FormController::class, 'indexRequestSuratPddikti'])->name('request_surat_pddikti');
     Route::post('/form/request-surat-pddikti', [FormController::class, 'requestSuratPddikti'])->name('handle_request_surat_pddikti');
+});
 
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['auth', 'auth.admin'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin_dashboard');
+
+    Route::get('/users', [UserController::class, 'index'])->name('admin_user_list');
+    Route::get('/users/{id}', [UserController::class, 'indexDetail'])->name('admin_user_detail');
+    Route::get('/users/tambah', function () {
+        return view('admin.userman.add_form');
+    })->name('admin_user_create');
+    Route::get('/users/{id}/update', [UserController::class, 'indexUpdate'])->name('admin_user_update');
+    Route::get('/users/{id}/delete', [UserController::class, 'indexDelete'])->name('admin_user_delete');
+
+    Route::post('/users', [UserController::class, 'create'])->name('handle_admin_user_create');
+    Route::post('/user/{id}/update', [UserController::class, 'update'])->name('handle_admin_user_update');
+    Route::post('/user/{id}/delete', [UserController::class, 'delete'])->name('handle_admin_user_delete');
 });
