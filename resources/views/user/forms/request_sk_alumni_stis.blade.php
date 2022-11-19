@@ -25,6 +25,7 @@
               <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
             </div>
             <button type="submit" class="btn btn-primary">Buat Jadwal Pengambilan</button>
+            <a href="{{route('user_dashboard')}}" class="btn btn-dark">Kembali</a>
           </form>
         </div>
       </div>

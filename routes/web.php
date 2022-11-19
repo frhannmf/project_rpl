@@ -33,6 +33,9 @@ Route::middleware(['auth.nologin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/ubah-password', [UserController::class, 'indexChangePassword'])->name('change_password');
+    Route::post('/ubah-password/{id}', [UserController::class, 'changePassword'])->name('handle_change_password');
 });
 
 Route::middleware(['auth', 'auth.user'])->group(function () {

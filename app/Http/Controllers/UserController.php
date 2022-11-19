@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,6 +34,12 @@ class UserController extends Controller
         return view('admin.userman.delete_form', ['user' => $user]);
     }
 
+    public function indexChangePassword()
+    {
+        $user = Auth::user();
+        return view('change_password', ['user' => $user]);
+    }
+
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -46,7 +53,6 @@ class UserController extends Controller
             "tahun_lulus" => 'nullable|string',
         ]);
         if ($validator->fails()) {
-            dd($validator->errors(), $request->prodi);
             return back()->withErrors($validator->errors());
         }
         $fields = $validator->validated();
@@ -95,5 +101,27 @@ class UserController extends Controller
     {
         User::where('id', $id)->delete();
         return redirect()->intended(route('admin_user_list'));
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            "password" => "required",
+            "new_password" => "required",
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+        $fields = $validator->validated();
+        $user = User::where('id', $id)->first();
+        if (!Hash::check($fields['password'], $user['password'])) {
+            return back()->withErrors(['password' => 'Password Tidak Sesuai']);
+        }
+        $password_hash = Hash::make($fields['new_password']);
+        User::where('id', $id)->update(['password' => $password_hash]);
+        if ($user['role'] == 'USER') {
+            return redirect()->intended(route('user_dashboard'));
+        }
+        return redirect()->intended(route('admin_dashboard'));
     }
 }

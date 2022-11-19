@@ -46,8 +46,10 @@
             <div class="mb-3">
               <label for="surat_kuasa" class="form-label">Surat Kuasa (jika diwakilkan)</label>
               <input class="form-control" type="file" id="surat_kuasa" name="surat_kuasa">
+              <a href="/templates/surat_kuasa.docx" download>Unduh Template Surat</a>
             </div>
             <button type="submit" class="btn btn-primary">Buat Jadwal Pengambilan</button>
+            <a href="{{route('user_dashboard')}}" class="btn btn-dark">Kembali</a>
           </form>
         </div>
       </div>

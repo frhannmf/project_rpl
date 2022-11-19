@@ -5,7 +5,10 @@
 @section('body')
 <div class="container">
   <h2 class="text-center my-5">Selamat Datang di Admin SILANI STIS</h2>
-  <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
+  <div class="d-flex gap-3">
+    <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
+    <a href="{{route('change_password')}}" class="btn btn-warning">Ubah Password</a>
+  </div>
   <div class="row mt-5">
     <div class="col">
       <div class="card">

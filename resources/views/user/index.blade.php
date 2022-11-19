@@ -55,7 +55,10 @@
                 <p class="fw-bold">{{$user['tahun_lulus']}}</p>
               </div>
             </div>
-            <a href="{{route('edit_profile')}}" class="btn btn-primary">Ubah Profil</a>
+            <div class="d-flex gap-3">
+              <a href="{{route('edit_profile')}}" class="btn btn-primary">Ubah Profil</a>
+              <a href="{{route('change_password')}}" class="btn btn-warning">Ubah Password</a>
+            </div>
           </div>
         </div>
       </div>
