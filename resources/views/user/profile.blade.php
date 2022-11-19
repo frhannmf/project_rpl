@@ -13,20 +13,20 @@
             @csrf
             <div class="mb-3">
               <label for="nim" class="form-label">NIM</label>
-              <input type="text" class="form-control" id="nim" name="nim" value="{{$user['nim']}}">
+              <input type="text" class="form-control" id="nim" name="nim" value="{{$user['nim']}}" required>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email" value="{{$user['email']}}">
+              <input type="email" class="form-control" id="email" name="email" value="{{$user['email']}}" required>
             </div>
             <div class="mb-3">
               <label for="name" class="form-label">Nama</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{$user['name']}}">
+              <input type="text" class="form-control" id="name" name="name" value="{{$user['name']}}" required>
             </div>
             <div class="mb-3">
               <p class="form-label">Jenis Kelamin</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="gendermale" value="Laki-Laki" {{ $user['gender'] == 'Laki-Laki'?'checked':'' }}>
+                <input class="form-check-input" type="radio" name="gender" id="gendermale" value="Laki-Laki" required {{ $user['gender'] == 'Laki-Laki'?'checked':'' }}>
                 <label class="form-check-label" for="gendermale">Laki-Laki</label>
               </div>
               <div class="form-check form-check-inline">
@@ -36,7 +36,7 @@
             </div>
             <div class="mb-3">
               <label for="prodi" class="form-label">Program Studi</label>
-              <select id="prodi" name="prodi" class="form-select" aria-label="prodi">
+              <select id="prodi" name="prodi" class="form-select" aria-label="prodi" required>
                 <option {{ $user['prodi'] == null?'selected':'' }}>Pilih Prodi</option>
                 <option {{ $user['prodi'] == 'DIV Statistika'?'selected':'' }} value="DIV Statistika">DIV Statistika</option>
                 <option {{ $user['prodi'] == 'DIV Komputasi Statistik'?'selected':'' }} value="DIV Komputasi Statistik">DIV Komputasi Statistik</option>
@@ -46,7 +46,7 @@
             <div class="mb-3">
               <p class="form-label">Status Kelulusan</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="status" id="status1" value="ALUMNI" {{ $user['status'] == 'ALUMNI'?'checked':'' }}>
+                <input class="form-check-input" type="radio" name="status" id="status1" value="ALUMNI" required {{ $user['status'] == 'ALUMNI'?'checked':'' }}>
                 <label class="form-check-label" for="status1">ALUMNI</label>
               </div>
               <div class="form-check form-check-inline">
@@ -56,7 +56,7 @@
             </div>
             <div class="mb-3">
               <label for="tahunlulus" class="form-label">Tahun Lulus</label>
-              <input type="text" class="form-control" id="tahunlulus" name="tahun_lulus" value="{{$user['tahun_lulus']}}">
+              <input type="text" class="form-control" id="tahunlulus" name="tahun_lulus" value="{{$user['tahun_lulus']}}" required>
             </div>
             <button type="submit" class="btn btn-primary">Ubah Profil</button>
           </form>
