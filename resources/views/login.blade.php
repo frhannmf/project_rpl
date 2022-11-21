@@ -27,6 +27,8 @@
               Ingat saya?
             </label>
           </div>
+          <a href="{{route('lupa_password')}}" class="mb-1" style="display: block">Lupa Password?</a>
+          <a href="{{route('lupa_nim')}}" class="mb-3" style="display: block">Lupa NIM?</a>
           @if ($errors->first('not_match'))
             <div class="alert alert-danger text-sm" role="alert">
               {{$errors->first('not_match')}}

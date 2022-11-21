@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResetUserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,16 @@ Route::middleware(['auth.nologin'])->group(function () {
 
     Route::post('/login', [AuthController::class, 'login'])->name('handle_login');
     Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('handle_admin_login');
+
+    Route::get('/lupa/nim', function () {
+        return view('user.forgot.nim');
+    })->name('lupa_nim');
+    Route::get('/lupa/password', function () {
+        return view('user.forgot.password');
+    })->name('lupa_password');
+
+    Route::post('/lupa/nim', [ResetUserController::class, 'lupaNim'])->name('handle_lupa_nim');
+    Route::post('/lupa/password', [ResetUserController::class, 'lupaPassword'])->name('handle_lupa_password');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -82,4 +93,9 @@ Route::middleware(['auth', 'auth.admin'])->prefix('admin')->group(function () {
     Route::get('/form', [FormController::class, 'getListFormAdmin'])->name('admin_form_list');
     Route::get('/form/{id}', [FormController::class, 'getDetailForm'])->name('admin_form_detail');
     Route::post('/form/{id}', [FormController::class, 'approveForm'])->name('handle_form_approve');
+
+    Route::post('/users/{id}/reset', [ResetUserController::class, 'resetUser'])->name('handle_admin_reset_user');
+
+    Route::get('/forgot', [ResetUserController::class, 'index'])->name('forgot_list');
+    Route::get('/forgot/{id}', [ResetUserController::class, 'indexForgotNim'])->name('forgot_nim_detail');
 });

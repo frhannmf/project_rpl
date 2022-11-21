@@ -28,6 +28,15 @@
         </div>
       </div>
     </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="mb-3">Akun Lupa Identitas</h4>
+          <p>Fitur untuk mereset password dan NIM akun yang lupa password atau NIM nya</p>
+          <a href="{{route('forgot_list')}}" class="btn btn-primary">Buka Lupa Identitas</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
