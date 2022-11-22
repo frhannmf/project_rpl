@@ -23,11 +23,11 @@
               <td>{{$form['type']=='submitsma'?'Pengumpulan Ijazah SMA':($form['type']=='retrievesma'?'Pengambilan Ijazah SMA':($form['type']=='retrievestis'?'Pengambilan Ijazah STIS':($form['type']=='requestskalumnistis'?'Permintaan Surat Keterangan Alumni Polstat STIS':'Permintaan Surat Tidak Terdaftar di PDDIKTI')))}}</td>
               <td>{{date('d F Y', strtotime($form['tanggal']))}}</td>
               <td>
-                <div class="badge {{$form['approve']=='Diterima'?'text-bg-success':($form['approve']=='Ditolak'?'text-bg-danger':'text-bg-warning')}}">
+                <div class="badge {{$form['approve'] == 'Diterima'?'text-bg-primary':($form['approve']=='Ditolak'?'text-bg-danger':($form['approve'] == 'Diserahkan'?'text-bg-success':'text-bg-warning'))}}">
                   {{$form['approve']!=null?$form['approve']:'Diproses'}}
                 </div>
               </td>
-              <td>{{$form['approve']=='Diterima'?'Silahkan ke kampus pada tanggal yang telah ditentukan':$form['reason']}}</td>
+              <td>{{$form['approve']=='Diterima'?'Silahkan ke kampus pada tanggal yang telah ditentukan':($form['approve']=='Diserahkan'?'Dokumen telah diserahkan':$form['reason'])}}</td>
             </tr>
           @endforeach
         </tbody>

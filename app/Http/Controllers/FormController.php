@@ -66,7 +66,7 @@ class FormController extends Controller
     public function approveForm(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "approve" => "required|string|in:Diterima,Ditolak",
+            "approve" => "required|string|in:Diterima,Ditolak,Diserahkan",
             "reason" => "nullable"
         ]);
         if ($validator->fails()) {

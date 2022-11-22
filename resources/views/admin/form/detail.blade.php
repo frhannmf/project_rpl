@@ -71,7 +71,7 @@
           @endif
           <div class="mb-3">
             <p class="mb-1">Status</p>
-            <div class="badge {{$form['approve'] == 'Diterima'?'text-bg-success':($form['approve']=='Ditolak'?'text-bg-danger':'text-bg-warning')}}">
+            <div class="badge {{$form['approve'] == 'Diterima'?'text-bg-primary':($form['approve']=='Ditolak'?'text-bg-danger':($form['approve'] == 'Diserahkan'?'text-bg-success':'text-bg-warning'))}}">
               {{$form['approve']!=null?$form['approve']:'Perlu Diproses'}}
             </div>
           </div>
@@ -87,6 +87,22 @@
               @csrf
               <input type="hidden" name="approve" value="Diterima">
               <button type="submit" class="btn btn-success">Terima</button>
+            </form>
+            <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post">
+              @csrf
+              <input type="hidden" name="approve" value="Ditolak">
+              <div class="mb-3">
+                <label for="reason" class="form-label">Alasan Ditolak</label>
+                <input type="text" class="form-control" id="reason" name="reason">
+              </div>
+              <button type="submit" class="btn btn-danger">Tolak</button>
+            </form>
+          @endif
+          @if ($form['approve'] == 'Diterima')
+            <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post" class="mb-3">
+              @csrf
+              <input type="hidden" name="approve" value="Diserahkan">
+              <button type="submit" class="btn btn-success">Telah Diserahkan</button>
             </form>
             <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post">
               @csrf
