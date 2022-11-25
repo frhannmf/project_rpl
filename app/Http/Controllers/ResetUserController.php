@@ -19,7 +19,7 @@ class ResetUserController extends Controller
     public function indexForgotNim($id)
     {
         $reset = ResetUser::where('id', $id)->first()->toArray();
-        $users = User::where('gender', $reset['gender'])->where('prodi', $reset['prodi'])->where('status', $reset['status'])->where('tahun_lulus', $reset['tahun_lulus'])->get()->toArray();
+        $users = User::where('gender', $reset['gender'])->where('prodi', $reset['prodi'])->where('status', $reset['status'])->where('tahun_lulus', $reset['tahun_lulus'])->orderBy('id', 'desc')->get()->toArray();
         return view('admin.forgot.nim_detail', ['reset' => $reset, 'users' => $users]);
     }
 

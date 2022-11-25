@@ -10,6 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('user.index', ["user" => $user]);
+        $isProfileEmpty = $user['name'] == null || $user['gender'] == null || $user['prodi'] == null || $user['status'] == null || $user['tahun_lulus'] == null;
+        return view('user.index', ["user" => $user, 'isProfileEmpty' => $isProfileEmpty]);
     }
 }

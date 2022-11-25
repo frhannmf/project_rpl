@@ -42,7 +42,7 @@ class FormController extends Controller
 
     public function getListFormAdmin()
     {
-        $forms = Form::with('user')->get()->toArray();
+        $forms = Form::with('user')->orderBy('id', 'desc')->get()->toArray();
 
         return view('admin.form.index', ["forms" => $forms]);
     }
@@ -58,7 +58,7 @@ class FormController extends Controller
     {
         $user = Auth::user();
 
-        $forms = Form::where('user_id', $user['id'])->get()->toArray();
+        $forms = Form::where('user_id', $user['id'])->orderBy('id', 'desc')->get()->toArray();
 
         return view('user.list_form', ["forms" => $forms]);
     }

@@ -71,6 +71,7 @@
       </div>
     </div>
     <h3 class="text-center mt-5 mb-4">Layanan Silani</h3>
+    @if (!$isProfileEmpty)
     <div class="row">
       <div class="col-12 col-md">
         <div class="card card-body h-100">
@@ -136,6 +137,9 @@
     <div class="mt-4 d-flex justify-content-center">
       <a href="{{route('list_form')}}" class="btn btn-success btn-lg">Lihat Daftar Pengajuan</a>
     </div>
+    @else
+      <p class="text-center text-danger fw-bold fs-5">Lengkapi Profil untuk akses layanan</p>
+    @endif
   </div>
 </div>
 @endsection

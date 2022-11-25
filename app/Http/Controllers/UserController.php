@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', 'USER')->get()->toArray();
+        $users = User::where('role', 'USER')->orderBy('id', 'desc')->get()->toArray();
         return view('admin.userman.index', ['users' => $users]);
     }
 
