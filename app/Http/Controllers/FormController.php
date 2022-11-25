@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -40,9 +41,16 @@ class FormController extends Controller
         return view('user.forms.request_surat_pddikti', ['user_id' => $user['id']]);
     }
 
-    public function getListFormAdmin()
+    public function getListFormAdmin(Request $request)
     {
-        $forms = Form::with('user')->orderBy('id', 'desc')->get()->toArray();
+        $query = Form::with('user')->orderBy('id', 'desc');
+        $forms = null;
+        if ($request->query('today')) {
+            $forms = $query->where('tanggal', Carbon::now()->timezone('Asia/Jakarta')->toDateString())->get()->toArray();
+            // dd($forms, Carbon::now()->timezone('Asia/Jakarta')->toDateString());
+        } else {
+            $forms = $query->get()->toArray();
+        }
 
         return view('admin.form.index', ["forms" => $forms]);
     }
@@ -67,7 +75,8 @@ class FormController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "approve" => "required|string|in:Diterima,Ditolak,Diserahkan",
-            "reason" => "nullable"
+            "reason" => "nullable",
+            "today" => "nullable",
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
@@ -75,8 +84,15 @@ class FormController extends Controller
 
         $fields = $validator->validated();
 
-        Form::where('id', $id)->update($fields);
-        return redirect()->intended(route('admin_form_list'));
+        $formData = [
+            'approve' => $fields['approve'],
+        ];
+        if ($request->has('reason')) {
+            $formData['reason'] = $fields['reason'];
+        }
+
+        Form::where('id', $id)->update($formData);
+        return redirect()->intended($fields['today'] == '1' ? route('admin_form_list', ['today' => '1']) : route('admin_form_list'));
     }
 
     public function submitSma(Request $request)

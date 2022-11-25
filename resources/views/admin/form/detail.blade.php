@@ -86,11 +86,17 @@
             <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post" class="mb-3">
               @csrf
               <input type="hidden" name="approve" value="Diterima">
+              @if(request()->has('today'))
+              <input type="hidden" name="today" value="1">
+              @endif
               <button type="submit" class="btn btn-success">Terima</button>
             </form>
             <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post">
               @csrf
               <input type="hidden" name="approve" value="Ditolak">
+              @if(request()->has('today'))
+              <input type="hidden" name="today" value="1">
+              @endif
               <div class="mb-3">
                 <label for="reason" class="form-label">Alasan Ditolak</label>
                 <input type="text" class="form-control" id="reason" name="reason">
@@ -102,11 +108,17 @@
             <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post" class="mb-3">
               @csrf
               <input type="hidden" name="approve" value="Diserahkan">
+              @if(request()->has('today'))
+              <input type="hidden" name="today" value="1">
+              @endif
               <button type="submit" class="btn btn-success">Telah Diserahkan</button>
             </form>
             <form action="{{route('handle_form_approve', ['id' => $form['id']])}}" method="post">
               @csrf
               <input type="hidden" name="approve" value="Ditolak">
+              @if(request()->has('today'))
+              <input type="hidden" name="today" value="1">
+              @endif
               <div class="mb-3">
                 <label for="reason" class="form-label">Alasan Ditolak</label>
                 <input type="text" class="form-control" id="reason" name="reason">
@@ -114,7 +126,7 @@
               <button type="submit" class="btn btn-danger">Tolak</button>
             </form>
           @endif
-          <a href="{{route('admin_form_list')}}" class="btn btn-dark mt-3">Kembali</a>
+          <a href="{{request()->has('today')?route('admin_form_list', ['today' => '1']):route('admin_form_list')}}" class="btn btn-dark mt-3">Kembali</a>
         </div>
       </div>
     </div>

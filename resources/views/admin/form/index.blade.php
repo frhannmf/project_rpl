@@ -5,7 +5,12 @@
 @section('body')
 <div class="container">
   <h2 class="mt-5 mb-3">Daftar Pengajuan Layanan Pengguna</h2>
-  <a href="{{route('admin_dashboard')}}" class="btn btn-dark">Kembali</a>
+  <div class="d-flex gap-2">
+    @if (!request()->has('today'))
+    <a href="{{route('admin_form_list', ['today' => '1'])}}" class="btn btn-success">Pengajuan Hari Ini</a>
+    @endif
+    <a href="{{request()->has('today')?route('admin_form_list'):route('admin_dashboard')}}" class="btn btn-dark">Kembali</a>
+  </div>
   <div class="mt-3">
     <table class="table table-striped table-bordered">
       <thead>
@@ -29,7 +34,7 @@
             </div>
           </td>
           <td>
-            <a href="{{route('admin_form_detail', ['id' => $form['id']])}}" class="btn btn-success btn-sm">Detail</a>
+            <a href="{{request()->has('today')?route('admin_form_detail', ['id' => $form['id'], 'today' => '1']):route('admin_form_detail', ['id' => $form['id']])}}" class="btn btn-success btn-sm">Detail</a>
           </td>
         </tr>
         @endforeach
