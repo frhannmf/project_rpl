@@ -12,13 +12,13 @@
               width="150px" alt="logo silani">
               <h1>SILANI STIS</h1>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <h4>Masuk ke SILANI</h4>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM" required>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
           </div>
           <div class="form-check mb-3">
@@ -27,8 +27,17 @@
               Ingat saya?
             </label>
           </div>
-          <a href="{{route('lupa_password')}}" class="mb-1" style="display: block">Lupa Password?</a>
-          <a href="{{route('lupa_nim')}}" class="mb-3" style="display: block">Lupa NIM?</a>
+          <div class="mb-4">
+            <a data-bs-toggle="collapse" href="#lupa" role="button" aria-expanded="false" aria-controls="lupa">
+              Lupa Password atau NIM?
+            </a>
+            <div class="collapse mt-3" id="lupa">
+              <div class="d-flex justify-content-between align-items-center gap-2">
+                <a href="{{route('lupa_password')}}" class="btn btn-secondary btn-sm flex-grow-1" style="display: block">Lupa Password?</a>
+                <a href="{{route('lupa_nim')}}" class="btn btn-secondary btn-sm flex-grow-1" style="display: block">Lupa NIM?</a>
+              </div>
+            </div>
+          </div>
           @if ($errors->first('not_match'))
             <div class="alert alert-danger text-sm" role="alert">
               {{$errors->first('not_match')}}

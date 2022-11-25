@@ -20,16 +20,18 @@
           <form method="POST" action="{{route('handle_request_surat_pddikti')}}">
             @csrf
             <input type="hidden" name="user_id" value="{{$user_id}}">
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
               <input type="text" class="form-control" id="ttl" name="ttl">
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengambilan</label>
               <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
             </div>
-            <button type="submit" class="btn btn-primary">Buat Jadwal Pengambilan</button>
-            <a href="{{route('user_dashboard')}}" class="btn btn-dark">Kembali</a>
+            <div class="d-flex gap-3">
+              <button type="submit" class="btn btn-primary flex-grow-1">Buat Jadwal Pengambilan</button>
+              <a href="{{route('user_dashboard')}}" class="btn btn-dark flex-grow-1">Kembali</a>
+            </div>
           </form>
         </div>
       </div>

@@ -11,17 +11,19 @@
           <h3 class="mb-3 text-center">Lupa Password</h3>
           <form method="POST" action="{{route('handle_lupa_password')}}">
             @csrf
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="nim" class="form-label">NIM</label>
               <input type="text" class="form-control" id="nim" name="nim" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="wa" class="form-label">Nomor Whatsapp yang bisa dihubungi</label>
               <input type="text" class="form-control" id="wa" name="wa" required>
-              <p class="mt-1 text-primary" style="font-size: 0.9rem">Admin akan menghubungi melalui nomor ini</p>
+              <p class="mt-2 text-danger fw-bold text-center" style="font-size: 0.9rem">Admin akan menghubungi melalui Whatsapp</p>
             </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
-            <a href="{{route('login')}}" class="btn btn-dark">Kembali</a>
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button type="submit" class="btn btn-primary flex-grow-1">Kirim</button>
+              <a href="{{route('login')}}" class="btn btn-dark flex-grow-1">Kembali</a>
+            </div>
           </form>
         </div>
       </div>

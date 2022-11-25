@@ -12,16 +12,16 @@
               width="150px" alt="logo silani">
               <h1>SILANI STIS</h1>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <h4>Masuk ke Admin SILANI</h4>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
           </div>
-          <div class="form-check mb-3">
+          <div class="form-check mb-4">
             <input class="form-check-input" type="checkbox" value="true" id="remember_me" name="remember_me">
             <label class="form-check-label" for="remember_me">
               Ingat saya?

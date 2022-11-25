@@ -32,13 +32,13 @@
           <td>
             <div class="row">
               <div class="col">
-                <a href="{{route('admin_user_detail', ['id' => $user['id']])}}" class="btn btn-success btn-sm">Detail</a>
+                <a href="{{route('admin_user_detail', ['id' => $user['id']])}}" class="btn btn-success btn-sm w-100">Detail</a>
               </div>
               <div class="col">
-                <a href="{{route('admin_user_update', ['id' => $user['id']])}}" class="btn btn-warning btn-sm">Ubah</a>
+                <a href="{{route('admin_user_update', ['id' => $user['id']])}}" class="btn btn-warning btn-sm w-100">Ubah</a>
               </div>
               <div class="col">
-                <a href="{{route('admin_user_delete', ['id' => $user['id']])}}" class="btn btn-danger btn-sm">Hapus</a>
+                <a href="{{route('admin_user_delete', ['id' => $user['id']])}}" class="btn btn-danger btn-sm w-100">Hapus</a>
               </div>
             </div>
           </td>

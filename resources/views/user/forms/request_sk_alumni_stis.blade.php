@@ -20,12 +20,14 @@
           <form method="POST" action="{{route('handle_request_sk_alumni_stis')}}">
             @csrf
             <input type="hidden" name="user_id" value="{{$user_id}}">
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengambilan</label>
               <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
             </div>
-            <button type="submit" class="btn btn-primary">Buat Jadwal Pengambilan</button>
-            <a href="{{route('user_dashboard')}}" class="btn btn-dark">Kembali</a>
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button type="submit" class="btn btn-primary flex-grow-1">Buat Jadwal Pengambilan</button>
+              <a href="{{route('user_dashboard')}}" class="btn btn-dark flex-grow-1">Kembali</a>
+            </div>
           </form>
         </div>
       </div>

@@ -42,7 +42,7 @@
                 <li>belum selesai masa ikatan dinas : <span class="fw-bold">TGR</span></li>
               </ul>
               <input class="form-control" type="file" id="bukti" name="bukti">
-              <a href="/templates/bps.docx" download>Unduh Template SK BPS</a>
+              <a href="/templates/bps.docx" class="mt-2" download>Unduh Template SK BPS</a>
             </div>
             <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengambilan</label>
@@ -66,10 +66,12 @@
             <div class="mb-4">
               <label for="surat_kuasa" class="form-label">Surat Kuasa (jika diwakilkan)</label>
               <input class="form-control" type="file" id="surat_kuasa" name="surat_kuasa">
-              <a href="/templates/surat_kuasa.docx" download>Unduh Template Surat</a>
+              <a href="/templates/surat_kuasa.docx" class="mt-2" download>Unduh Template Surat</a>
             </div>
-            <button type="submit" class="btn btn-primary">Buat Jadwal Pengambilan</button>
-            <a href="{{route('user_dashboard')}}" class="btn btn-dark">Kembali</a>
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button type="submit" class="btn btn-primary flex-grow-1">Buat Jadwal Pengambilan</button>
+              <a href="{{route('user_dashboard')}}" class="btn btn-dark flex-grow-1">Kembali</a>
+            </div>
           </form>
         </div>
       </div>

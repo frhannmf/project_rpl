@@ -39,9 +39,11 @@
               <p class="fw-bold">{{$user['tahun_lulus']}}</p>
             </div>
           </div>
-          <a href="{{route('admin_user_update', ['id' => $user['id']])}}" class="btn btn-primary">Ubah</a>
-          <a href="{{route('admin_user_delete', ['id' => $user['id']])}}" class="btn btn-danger">Hapus</a>
-          <a href="{{route('admin_user_list')}}" class="btn btn-dark">Kembali</a>
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <a href="{{route('admin_user_delete', ['id' => $user['id']])}}" class="btn btn-danger flex-grow-1">Hapus</a>
+            <a href="{{route('admin_user_update', ['id' => $user['id']])}}" class="btn btn-primary flex-grow-1">Ubah</a>
+            <a href="{{route('admin_user_list')}}" class="btn btn-dark flex-grow-1">Kembali</a>
+          </div>
         </div>
       </div>
     </div>
