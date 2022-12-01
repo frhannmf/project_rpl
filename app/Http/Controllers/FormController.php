@@ -84,6 +84,10 @@ class FormController extends Controller
 
         $fields = $validator->validated();
 
+        if (!$request->has('today')) {
+            $fields['today'] = '0';
+        }
+
         $formData = [
             'approve' => $fields['approve'],
         ];
@@ -113,7 +117,7 @@ class FormController extends Controller
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['user_id'] . '_suratkuasasubmitsma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $fields['nim'] . '_suratkuasasubmitsma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -148,7 +152,7 @@ class FormController extends Controller
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['user_id'] . '_suratkuasaretrievesma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $fields['nim'] . '_suratkuasaretrievesma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -185,7 +189,7 @@ class FormController extends Controller
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['user_id'] . '_suratkuasaretrievestis_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $fields['nim'] . '_suratkuasaretrievestis_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -193,7 +197,7 @@ class FormController extends Controller
         $bukti = $request->file('bukti');
         $filename_bukti = null;
         if ($bukti) {
-            $filename = $fields['user_id'] . '_buktiretrievestis_' . strval(time()) . '.' . $bukti->getClientOriginalExtension();
+            $filename = $fields['nim'] . '_buktiretrievestis_' . strval(time()) . '.' . $bukti->getClientOriginalExtension();
             $bukti->move(public_path('images/uploads'), $filename);
             $filename_bukti = 'images/uploads/' . $filename;
         }
