@@ -113,11 +113,12 @@ class FormController extends Controller
             return back()->withErrors($validator->errors());
         }
         $fields = $validator->validated();
+        $user = Auth::user();
 
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['nim'] . '_suratkuasasubmitsma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $user['nim'] . '_suratkuasasubmitsma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -148,11 +149,12 @@ class FormController extends Controller
             return back()->withErrors($validator->errors());
         }
         $fields = $validator->validated();
+        $user = Auth::user();
 
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['nim'] . '_suratkuasaretrievesma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $user['nim'] . '_suratkuasaretrievesma_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -185,11 +187,12 @@ class FormController extends Controller
             return back()->withErrors($validator->errors());
         }
         $fields = $validator->validated();
+        $user = Auth::user();
 
         $surat_kuasa = $request->file('surat_kuasa');
         $filename_surat_kuasa = null;
         if ($surat_kuasa) {
-            $filename = $fields['nim'] . '_suratkuasaretrievestis_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
+            $filename = $user['nim'] . '_suratkuasaretrievestis_' . strval(time()) . '.' . $surat_kuasa->getClientOriginalExtension();
             $surat_kuasa->move(public_path('images/uploads'), $filename);
             $filename_surat_kuasa = 'images/uploads/' . $filename;
         }
@@ -197,7 +200,7 @@ class FormController extends Controller
         $bukti = $request->file('bukti');
         $filename_bukti = null;
         if ($bukti) {
-            $filename = $fields['nim'] . '_buktiretrievestis_' . strval(time()) . '.' . $bukti->getClientOriginalExtension();
+            $filename = $user['nim'] . '_buktiretrievestis_' . strval(time()) . '.' . $bukti->getClientOriginalExtension();
             $bukti->move(public_path('images/uploads'), $filename);
             $filename_bukti = 'images/uploads/' . $filename;
         }
@@ -220,6 +223,7 @@ class FormController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "user_id" => "required",
+            "keperluan" => "required",
             "tanggal" => "required",
         ]);
         if ($validator->fails()) {
@@ -233,6 +237,7 @@ class FormController extends Controller
             'type' => 'requestskalumnistis',
             'nama' => $user['name'],
             'tanggal' => $fields['tanggal'],
+            'keperluan' => $fields['keperluan'],
             'user_id' => $fields['user_id']
         ]);
         return redirect()->intended(route('list_form'));
@@ -242,8 +247,8 @@ class FormController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "user_id" => "required",
+            "keperluan" => "required",
             "tanggal" => "required",
-            "ttl" => "required",
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
@@ -255,8 +260,9 @@ class FormController extends Controller
         Form::create([
             'type' => 'requestsuratpddikti',
             'nama' => $user['name'],
-            'ttl' => $fields['ttl'],
+            'ttl' => $user['ttl'],
             'tanggal' => $fields['tanggal'],
+            'keperluan' => $fields['keperluan'],
             'user_id' => $fields['user_id']
         ]);
         return redirect()->intended(route('list_form'));

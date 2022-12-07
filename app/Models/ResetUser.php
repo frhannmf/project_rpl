@@ -17,7 +17,7 @@ class ResetUser extends Model
         'prodi',
         'status',
         'tahun_lulus',
-        'wa',
+        'email',
         'selesai'
     ];
 }

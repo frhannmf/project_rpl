@@ -39,6 +39,10 @@
               </div>
             </div>
             <div class="mb-4">
+              <label for="ttl" class="form-label">Tempat Tanggal Lahir</label>
+              <input type="text" class="form-control" id="ttl" name="ttl" value="{{$user['ttl']}}">
+            </div>
+            <div class="mb-4">
               <label for="prodi" class="form-label">Program Studi</label>
               <select id="prodi" name="prodi" class="form-select" aria-label="prodi">
                 <option {{ $user['prodi'] == null?'selected':'' }}>Pilih Prodi</option>

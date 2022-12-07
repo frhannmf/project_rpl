@@ -22,12 +22,12 @@
             <input type="hidden" name="user_id" value="{{$user_id}}">
             <div class="mb-4">
               <label for="nama" class="form-label">Nama Lengkap Sesuai Ijazah</label>
-              <input type="text" class="form-control" id="nama" name="nama">
+              <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="mb-4">
               <p class="form-label">Status Ikatan Dinas</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ikatan_dinas" id="selesaiid" value="Selesai Ikatan Dinas" checked>
+                <input class="form-check-input" type="radio" name="ikatan_dinas" id="selesaiid" value="Selesai Ikatan Dinas" checked required>
                 <label class="form-check-label" for="selesaiid">Selesai Ikatan Dinas</label>
               </div>
               <div class="form-check form-check-inline">
@@ -41,17 +41,17 @@
                 <li>Pasca ikatan dinas : <span class="fw-bold">SK BPS</span></li>
                 <li>belum selesai masa ikatan dinas : <span class="fw-bold">TGR</span></li>
               </ul>
-              <input class="form-control" type="file" id="bukti" name="bukti">
+              <input class="form-control" type="file" id="bukti" name="bukti" required>
               <a href="/templates/bps.docx" class="mt-2" download>Unduh Template SK BPS</a>
             </div>
             <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengambilan</label>
-              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
+              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal" required>
             </div>
             <div class="mb-4">
               <p class="form-label">Pengambil Ijazah</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="diwakilkan" id="pengumpulsendiri" value="false" checked>
+                <input class="form-check-input" type="radio" name="diwakilkan" id="pengumpulsendiri" value="false" checked required>
                 <label class="form-check-label" for="pengumpulsendiri">Diri Sendiri</label>
               </div>
               <div class="form-check form-check-inline">

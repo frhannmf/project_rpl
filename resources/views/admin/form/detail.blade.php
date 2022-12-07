@@ -69,6 +69,12 @@
               <p class="fw-bold">{{$form['ttl']}}</p>
             </div>
           @endif
+          @if ($form['type'] == 'requestskalumnistis' || $form['type'] == 'requestsuratpddikti')
+            <div class="mb-3">
+              <p class="mb-1">Keperluan pembuatan surat</p>
+              <p class="fw-bold">{{$form['keperluan']}}</p>
+            </div>
+          @endif
           <div class="mb-3">
             <p class="mb-1">Status</p>
             <div class="badge {{$form['approve'] == 'Diterima'?'text-bg-primary':($form['approve']=='Ditolak'?'text-bg-danger':($form['approve'] == 'Diserahkan'?'text-bg-success':'text-bg-warning'))}}">

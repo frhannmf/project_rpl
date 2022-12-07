@@ -22,6 +22,7 @@ class ProfileController extends Controller
             "email" => 'nullable|email',
             "name" => 'nullable|string',
             "gender" => 'nullable|string|in:Laki-Laki,Perempuan',
+            "ttl" => 'nullable|string',
             "prodi" => 'nullable|string|in:DIV Statistika,DIV Komputasi Statistik,DIII Statistika',
             "status" => 'nullable|string|in:ALUMNI,MAHASISWA',
             "tahun_lulus" => 'nullable|string',

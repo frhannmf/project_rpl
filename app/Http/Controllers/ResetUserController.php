@@ -31,7 +31,7 @@ class ResetUserController extends Controller
             "prodi" => 'required|string|in:DIV Statistika,DIV Komputasi Statistik,DIII Statistika',
             "status" => 'required|string|in:ALUMNI,MAHASISWA',
             "tahun_lulus" => 'required|string',
-            "wa" => 'required|string',
+            "email" => 'required|string',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
@@ -46,7 +46,7 @@ class ResetUserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "nim" => 'required|string',
-            "wa" => 'required|string',
+            "email" => 'required|string',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());

@@ -27,6 +27,10 @@
               <p class="fw-bold">{{$user['gender']}}</p>
             </div>
             <div class="col-12 col-md-6">
+              <p class="mb-1">Tempat Tanggal Lahir</p>
+              <p class="fw-bold">{{$user['ttl']}}</p>
+            </div>
+            <div class="col-12 col-md-6">
               <p class="mb-1">Program Studi</p>
               <p class="fw-bold">{{$user['prodi']}}</p>
             </div>

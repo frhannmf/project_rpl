@@ -22,20 +22,20 @@
             <input type="hidden" name="user_id" value="{{$user_id}}">
             <div class="mb-4">
               <label for="nama" class="form-label">Nama Lengkap Sesuai Ijazah</label>
-              <input type="text" class="form-control" id="nama" name="nama">
+              <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="mb-4">
               <label for="nomor" class="form-label">Nomor Ijazah</label>
-              <input type="text" class="form-control" id="nomor" name="nomor">
+              <input type="text" class="form-control" id="nomor" name="nomor" required>
             </div>
             <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengumpulan</label>
-              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
+              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal" required>
             </div>
             <div class="mb-4">
               <p class="form-label">Pengumpul Ijazah</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="diwakilkan" id="pengumpulsendiri" value="false" checked>
+                <input class="form-check-input" type="radio" name="diwakilkan" id="pengumpulsendiri" value="false" checked required>
                 <label class="form-check-label" for="pengumpulsendiri">Diri Sendiri</label>
               </div>
               <div class="form-check form-check-inline">

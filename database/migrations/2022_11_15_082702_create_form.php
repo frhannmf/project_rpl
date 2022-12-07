@@ -24,6 +24,7 @@ class CreateForm extends Migration
             $table->string('ikatan_dinas')->nullable();
             $table->string('bukti')->nullable();
             $table->string('ttl')->nullable();
+            $table->string('keperluan')->nullable();
             $table->string('type');
             $table->string('approve')->nullable();
             $table->string('reason')->nullable();

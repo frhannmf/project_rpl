@@ -19,6 +19,7 @@ class Form extends Model
         'ikatan_dinas',
         'bukti',
         'ttl',
+        'keperluan',
         'type',
         'approve',
         'reason',

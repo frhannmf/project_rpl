@@ -22,7 +22,7 @@ class CreateResetUser extends Migration
             $table->string('prodi')->nullable();
             $table->string('status')->nullable();
             $table->string('tahun_lulus')->nullable();
-            $table->string('wa')->nullable();
+            $table->string('email')->nullable();
             $table->boolean('selesai')->default(false);
             $table->timestamps();
         });

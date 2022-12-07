@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>NIM</th>
-          <th>Whatsapp</th>
+          <th>Email</th>
           <th>Tipe Identitas</th>
           <th>Status</th>
           <th>Aksi</th>
@@ -21,7 +21,7 @@
         @foreach ($resets as $reset)
         <tr>
           <td>{{$reset['nim']?$reset['nim']:'-'}}</td>
-          <td>{{$reset['wa']}}</td>
+          <td>{{$reset['email']}}</td>
           <td>
             <div class="badge {{$reset['type']=='nim'?'text-bg-success':'text-bg-primary'}}">
               {{$reset['type']=='nim'?'NIM':'Password'}}

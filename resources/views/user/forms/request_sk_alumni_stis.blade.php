@@ -21,8 +21,12 @@
             @csrf
             <input type="hidden" name="user_id" value="{{$user_id}}">
             <div class="mb-4">
+              <label for="keperluan" class="form-label">Keperluan pembuatan surat</label>
+              <input type="text" class="form-control" id="keperluan" name="keperluan" required>
+            </div>
+            <div class="mb-4">
               <label for="tanggal" class="form-label">Tanggal Pengambilan</label>
-              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal">
+              <input type="text" class="form-control datepicker" id="tanggal" name="tanggal" required>
             </div>
             <div class="d-flex justify-content-between align-items-center gap-2">
               <button type="submit" class="btn btn-primary flex-grow-1">Buat Jadwal Pengambilan</button>
